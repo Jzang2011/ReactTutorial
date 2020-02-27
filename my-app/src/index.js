@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+//This is a function component
 function Square(props) {
   return (
     <button className="square" onClick={props.onClick}>
@@ -16,13 +17,16 @@ class Board extends React.Component {
     this.state = {
       squares: Array(9).fill(null),
       xIsNext: true,
-      //Adding COmment for test
+      
     };
   }
 
   handleClick(i){
+    //Get a copy of the state of the board and put it in a constant variable "squares"
     const squares = this.state.squares.slice();
+    //Mutate the copy of the array squares based on the ternary operator (if This.state.xIsNext is true then do  whats on the left of the ":" else what is on the right)
     squares[i] = this.state.xIsNext ? 'X' : 'O';
+    //Set the state of the board to be the new state (the mutated copy of the original state)
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
